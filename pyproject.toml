@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fig-lab"
+version = "0.1.0"
+description = "Visualization framework for dataset and experiment artifacts."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = {text = "MIT"}
+authors = [{name = "fig-lab Maintainers"}]
+dependencies = [
+    "altair",
+    "bokeh",
+    "datashader",
+    "holoviews",
+    "hvplot",
+    "lets-plot",
+    "matplotlib",
+    "napari[pyqt6,optional]",
+    "panel",
+    "plotly",
+    "plotnine",
+    "SciencePlots",
+    "seaborn",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.3.0",
+]
+
+[project.scripts]
+fig-lab = "fig_lab.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
